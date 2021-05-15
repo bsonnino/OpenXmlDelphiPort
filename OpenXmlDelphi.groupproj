@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{C0B9855C-290F-4410-8DAA-ED6A74178602}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="AbreArquivos\AbreArquivos.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="CriaSimples\CriaSimples.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="CriaComplexo\CriaComplexo.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="AbreArquivos">
+        <MSBuild Projects="AbreArquivos\AbreArquivos.dproj"/>
+    </Target>
+    <Target Name="AbreArquivos:Clean">
+        <MSBuild Projects="AbreArquivos\AbreArquivos.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="AbreArquivos:Make">
+        <MSBuild Projects="AbreArquivos\AbreArquivos.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="CriaSimples">
+        <MSBuild Projects="CriaSimples\CriaSimples.dproj"/>
+    </Target>
+    <Target Name="CriaSimples:Clean">
+        <MSBuild Projects="CriaSimples\CriaSimples.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CriaSimples:Make">
+        <MSBuild Projects="CriaSimples\CriaSimples.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="CriaComplexo">
+        <MSBuild Projects="CriaComplexo\CriaComplexo.dproj"/>
+    </Target>
+    <Target Name="CriaComplexo:Clean">
+        <MSBuild Projects="CriaComplexo\CriaComplexo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CriaComplexo:Make">
+        <MSBuild Projects="CriaComplexo\CriaComplexo.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="AbreArquivos;CriaSimples;CriaComplexo"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="AbreArquivos:Clean;CriaSimples:Clean;CriaComplexo:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="AbreArquivos:Make;CriaSimples:Make;CriaComplexo:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
